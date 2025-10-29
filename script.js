@@ -32,7 +32,7 @@
     $submitBtn.disabled = true;
 
     // ✅ URL correcta (AJAX)
-    fetch('https://formsubmit.co/ajax/el/yasufe', {
+    fetch('https://formsubmit.co/ajax/mohaouli@yahoo.es', {
       method: 'POST',
       body: new FormData(e.target),
     })
