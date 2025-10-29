@@ -31,25 +31,21 @@
     $loader.classList.remove('none');
     $submitBtn.disabled = true;
 
+    // ✅ URL correcta (AJAX)
     fetch('https://formsubmit.co/ajax/el/yasufe', {
       method: 'POST',
       body: new FormData(e.target),
     })
-    .then((res) => res.ok ? res.json() : Promise.reject(res))
-    .then((json) => {
+    .then(res => res.ok ? res.json() : Promise.reject(res))
+    .then(json => {
       console.log(json);
+      $response.querySelector('h3').innerHTML = "¡Mensaje enviado correctamente!";
       location.hash = '#gracias';
       $form.reset();
     })
     .catch(err => {
       console.error(err);
-      if (err instanceof Response) {
-        err.text().then(msg => {
-          $response.querySelector('h3').innerHTML = `Error ${err.status}: ${err.statusText || msg}`;
-        });
-      } else {
-        $response.querySelector('h3').innerHTML = `Error: Ocurrió un problema de conexión o del navegador.`;
-      }
+      $response.querySelector('h3').innerHTML = `❌ Error al enviar el mensaje.`;
     })
     .finally(() => {
       $loader.classList.add('none');
@@ -60,4 +56,3 @@
     });
   });
 })(document);
-
