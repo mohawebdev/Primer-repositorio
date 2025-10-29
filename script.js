@@ -31,7 +31,7 @@
     $loader.classList.remove('none');
     $submitBtn.disabled = true;
 
-    fetch('https://formsubmit.co/el/yasufe', {
+    fetch('https://formsubmit.co/ajax/el/yasufe', {
       method: 'POST',
       body: new FormData(e.target),
     })
